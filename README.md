@@ -270,13 +270,6 @@ Non-professional language:
 - [NO] Makes coverage decisions ("I recommend we deny")
 - [NO] Ignores alternatives ("The evidence proves fraud")
 
-Non-professional language:
-- !=Œ Vague sourcing ("It was reported that...")
-- !=Œ Mixes observation/conclusion ("The claimant appears fraudulent")
-- !=Œ Assumes intent from circumstance ("The delay proves deception")
-- !=Œ Paraphrases policy ("The policy clearly means...")
-- !=Œ Makes coverage decisions ("I recommend we deny")
-- !=Œ Ignores alternatives ("The evidence proves fraud")
 
 ---
 
@@ -405,6 +398,7 @@ A: No. We validate language. Coverage and liability decisions are yours (or your
 
 **Q: Can I use this for other types of documents?**
 A: This version is built for investigative reports. The rules could extend to other professional writing, but start here.
+
 
 
 
