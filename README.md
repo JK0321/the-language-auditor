@@ -2,7 +2,7 @@
 
 **An editor for SIU investigators that teaches the rules of professional investigative language.** Not a rewriter. Not a decision-maker. A language coach.
 
-🌐 **[View the Landing Page](landing.html)** — Interactive introduction to the system
+🌐 **[View the Landing Page](https://JK0321.github.io/the-language-auditor/landing.html)** — Interactive introduction to the system
 
 ---
 
