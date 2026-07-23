@@ -36,18 +36,18 @@ The validator enforces **12 professional language distinctions** drawn from Texa
 
 | Rule | What It Prevents |
 |------|-----------------|
-| **Observation ≠ Interpretation** | Reporting conclusions as if they're facts |
-| **Evidence ≠ Conclusion** | Letting your interpretation override what the evidence actually shows |
-| **Suspicion ≠ Evidence** | Using gut feeling as proof |
-| **Possibility ≠ Probability ≠ Proof** | Overstating certainty ("it's possible" → "it's proven") |
-| **Intent ≠ Motive** | Confusing "why someone wanted to" with "proof they deliberately did" |
-| **Contradiction ≠ Deception** | Treating inconsistent statements as proof of lying |
-| **Recommendation ≠ Decision** | Overstepping your role (adjuster makes coverage calls, not you) |
-| **Finding ≠ Allegation** | Using prosecutor language when you're an investigator |
-| **Missing Evidence ≠ Concealment** | Inferring someone's hiding something from absence of evidence |
-| **Correlation ≠ Causation** | Connecting two facts without proof one caused the other |
+| **Observation != Interpretation** | Reporting conclusions as if they're facts |
+| **Evidence != Conclusion** | Letting your interpretation override what the evidence actually shows |
+| **Suspicion != Evidence** | Using gut feeling as proof |
+| **Possibility != Probability != Proof** | Overstating certainty ("it's possible" → "it's proven") |
+| **Intent != Motive** | Confusing "why someone wanted to" with "proof they deliberately did" |
+| **Contradiction != Deception** | Treating inconsistent statements as proof of lying |
+| **Recommendation != Decision** | Overstepping your role (adjuster makes coverage calls, not you) |
+| **Finding != Allegation** | Using prosecutor language when you're an investigator |
+| **Missing Evidence != Concealment** | Inferring someone's hiding something from absence of evidence |
+| **Correlation != Causation** | Connecting two facts without proof one caused the other |
 | **Authority Boundaries** | Staying in investigator role, not making adjuster decisions |
-| **Finding ≠ Policy Interpretation** | Mapping findings to specific policy coverage, not paraphrasing |
+| **Finding != Policy Interpretation** | Mapping findings to specific policy coverage, not paraphrasing |
 
 See: `rules.md` for full definitions and examples.
 
@@ -98,11 +98,11 @@ See: `identity.md` for full authority layer breakdown; `reference/LEGAL-FOUNDATI
 
 This shows exactly how the system works on a real case.
 
-**Real example: Contradiction ≠ Deception**
+**Real example: Contradiction != Deception**
 
-❌ **Bad:** "The claimant's two statements contradicted each other. This proves the claimant was being deceptive."
+[BAD] "The claimant's two statements contradicted each other. This proves the claimant was being deceptive."
 
-✅ **Good:** "Statement 1 (date, to person): '[quote].' Statement 2 (date, to person): '[quote].' These contradict on [specific point]. Possible causes: (1) memory error, (2) misunderstanding, (3) intentional. Evidence to distinguish: [what would help]."
+[GOOD] "Statement 1 (date, to person): '[quote].' Statement 2 (date, to person): '[quote].' These contradict on [specific point]. Possible causes: (1) memory error, (2) misunderstanding, (3) intentional. Evidence to distinguish: [what would help]."
 
 **Why:** Contradiction is observable. Deception is intent. You can't see intent. What you *can* do is investigate the gap between them.
 
@@ -405,5 +405,6 @@ A: No. We validate language. Coverage and liability decisions are yours (or your
 
 **Q: Can I use this for other types of documents?**
 A: This version is built for investigative reports. The rules could extend to other professional writing, but start here.
+
 
 
