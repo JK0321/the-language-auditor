@@ -117,7 +117,7 @@
         .cta-button {
             display: inline-block;
             background: var(--primary);
-            color: white;
+            color: white !important;
             padding: 14px 32px;
             border-radius: 6px;
             font-weight: 600;
@@ -125,11 +125,13 @@
             transition: background 0.3s;
             border: none;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .cta-button:hover {
             background: var(--primary-dark);
             text-decoration: none;
+            color: white !important;
         }
 
         .cta-secondary {
