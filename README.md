@@ -2,6 +2,8 @@
 
 **An editor for SIU investigators that teaches the rules of professional investigative language.** Not a rewriter. Not a decision-maker. A language coach.
 
+🌐 **[View the Landing Page](landing.html)** — Interactive introduction to the system
+
 ---
 
 ## What It Solves
@@ -11,8 +13,6 @@ SIU investigators write reports in a high-pressure environment. Courts, juries, 
 **The problem:** You learn rules implicitly. Get corrected by supervisors. See cases thrown out. But the rules themselves aren't documented—so each investigator reinvents the wheel and makes similar mistakes across investigations.
 
 **The system:** This validator externalizes the rules. It flags where your language violates professional standards and explains why it matters.
-
-See: [differentiator.md](differentiator.md) for full comparison vs. red flag checklists.
 
 ---
 

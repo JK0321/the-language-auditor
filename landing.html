@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Language Auditor — Professional Investigative Report Validator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #0c2340;
+            --accent: #dc2626;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --neutral-bg: #f9fafb;
+            --neutral-border: #e5e7eb;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #3b82f6;
+                --primary-light: #60a5fa;
+                --primary-dark: #1e3a8a;
+                --accent: #ef4444;
+                --success: #22c55e;
+                --warning: #f97316;
+                --neutral-bg: #111827;
+                --neutral-border: #374151;
+                --text-primary: #f3f4f6;
+                --text-secondary: #d1d5db;
+                --text-light: #9ca3af;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-primary);
+            background: var(--neutral-bg);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--neutral-border);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background: var(--neutral-bg);
+            z-index: 10;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        nav a {
+            margin-left: 30px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .hero .tagline {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            margin-left: 15px;
+        }
+
+        .cta-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Section */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--neutral-border);
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        /* Problem/Solution Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--neutral-border);
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .card {
+                background: #1f2937;
+            }
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .card li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .card.problem li:before {
+            content: "✗";
+            color: var(--accent);
+        }
+
+        /* Rules Grid */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .rule-card {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .rule-card {
+                background: #1f2937;
+            }
+        }
+
+        .rule-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .rule-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .rule-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Authority Grid */
+        .authority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .authority-card {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--neutral-border);
+            text-align: center;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .authority-card {
+                background: #1f2937;
+            }
+        }
+
+        .authority-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .authority-card h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .authority-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Example Section */
+        .example-container {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .example-container {
+                background: #1f2937;
+            }
+        }
+
+        .example-bad, .example-good {
+            margin-bottom: 30px;
+        }
+
+        .example-bad h4, .example-good h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .example-bad h4 {
+            color: var(--accent);
+        }
+
+        .example-good h4 {
+            color: var(--success);
+        }
+
+        .example-text {
+            background: var(--neutral-bg);
+            padding: 15px;
+            border-radius: 4px;
+            font-family: "Monaco", "Courier New", monospace;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            border-left: 3px solid;
+        }
+
+        .example-bad .example-text {
+            border-left-color: var(--accent);
+        }
+
+        .example-good .example-text {
+            border-left-color: var(--success);
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step {
+            position: relative;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .step h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--primary-light);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .highlight-box {
+                background: var(--primary-dark);
+            }
+        }
+
+        .highlight-box h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 15px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            border-top: 1px solid var(--neutral-border);
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            footer {
+                background: #1f2937;
+            }
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            letter-spacing: 0.5px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .footer-column a {
+            color: var(--text-secondary);
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--neutral-border);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .tagline {
+                font-size: 16px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-secondary {
+                display: block;
+                margin-left: 0;
+                margin-top: 15px;
+            }
+
+            nav a {
+                margin-left: 15px;
+                font-size: 12px;
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">⚖️ The Language Auditor</div>
+                <nav>
+                    <a href="#rules">Rules</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#example">Example</a>
+                    <a href="https://github.com/JK0321/the-language-auditor">GitHub</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>The Language Auditor</h1>
+            <p class="tagline">Professional language validator for SIU investigators. Teaches the rules. Doesn't rewrite.</p>
+            <button class="cta-button">Try It Free</button>
+            <button class="cta-button cta-secondary">Read the Docs</button>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">The Problem</h2>
+            <p class="section-subtitle">SIU investigators work under time pressure. Courts, juries, and adjusters evaluate your language as much as your facts.</p>
+
+            <div class="grid-2">
+                <div class="card problem">
+                    <h3>Without Structure</h3>
+                    <ul>
+                        <li>Reports sent back for revision</li>
+                        <li>Cases dismissed on language grounds</li>
+                        <li>Legal exposure</li>
+                        <li>Similar mistakes repeat</li>
+                        <li>Rules learned implicitly only</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>With the Language Auditor</h3>
+                    <ul>
+                        <li>Catch violations before submission</li>
+                        <li>Findings legally defensible</li>
+                        <li>Rules explicit and taught</li>
+                        <li>Consistent professional language</li>
+                        <li>Stay in investigator role</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="rules">
+        <div class="container">
+            <h2 class="section-title">The 12 Professional Language Rules</h2>
+            <p class="section-subtitle">These core distinctions separate professional investigators from everyone else. Each is grounded in case law, standards, or policy.</p>
+
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <span class="rule-number">1</span>
+                    <h4>Observation ≠ Interpretation</h4>
+                    <p>Report what you saw separately from what it could mean.</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">2</span>
+                    <h4>Evidence ≠ Conclusion</h4>
+                    <p>Facts are facts. Conclusions are what decision-makers infer.</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">3</span>
+                    <h4>Suspicion ≠ Evidence</h4>
+                    <p>Gut feeling is not proof. Document specific facts only.</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">4</span>
+                    <h4>Possibility ≠ Probability ≠ Proof</h4>
+                    <p>Be precise about certainty: "could," "likely," or "verified."</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">5</span>
+                    <h4>Intent ≠ Motive</h4>
+                    <p>Why someone wanted to ≠ proof they deliberately did.</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">6</span>
+                    <h4>Contradiction ≠ Deception</h4>
+                    <p>Inconsistency is observable. Deception (intent) is not.</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">7</span>
+                    <h4>Recommendation ≠ Decision</h4>
+                    <p>You recommend findings. Adjuster makes coverage calls.</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">8</span>
+                    <h4>Finding ≠ Allegation</h4>
+                    <p>Verified fact vs. unverified claim or third-party statement.</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">9</span>
+                    <h4>Missing Evidence ≠ Concealment</h4>
+                    <p>"Didn't find" is not the same as "someone is hiding."</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">10</span>
+                    <h4>Correlation ≠ Causation</h4>
+                    <p>Two facts can occur together without one causing the other.</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">11</span>
+                    <h4>Authority Boundaries</h4>
+                    <p>Stay in investigator role. Don't make adjuster decisions.</p>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-number">12</span>
+                    <h4>Finding ≠ Policy Interpretation</h4>
+                    <p>Map findings to specific coverage, perils, exclusions, limits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Built on Authority</h2>
+            <p class="section-subtitle">Rules don't exist in a vacuum. Each is grounded in professional authority.</p>
+
+            <div class="authority-grid">
+                <div class="authority-card">
+                    <div class="authority-icon">📜</div>
+                    <h4>Texas Case Law</h4>
+                    <p>Arnold, Stoker, Giles, Menchaca—what courts require from investigators</p>
+                </div>
+
+                <div class="authority-card">
+                    <div class="authority-icon">🏢</div>
+                    <h4>ACFE Standards</h4>
+                    <p>Certified Fraud Examiner professional best practices</p>
+                </div>
+
+                <div class="authority-card">
+                    <div class="authority-icon">⚖️</div>
+                    <h4>Texas Insurance Code</h4>
+                    <p>Statutory requirements for investigation and coverage decisions</p>
+                </div>
+
+                <div class="authority-card">
+                    <div class="authority-icon">📋</div>
+                    <h4>Policy Language</h4>
+                    <p>Actual HO-3 homeowners policy text (not paraphrased)</p>
+                </div>
+
+                <div class="authority-card">
+                    <div class="authority-icon">🧠</div>
+                    <h4>Language Games Theory</h4>
+                    <p>Wittgenstein: meaning through professional use and rules</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">The Philosophy: Why Language-Games Matter</h2>
+            <p class="section-subtitle">Understanding Wittgenstein's insight into how professional language works.</p>
+
+            <div style="background: white; border-radius: 8px; padding: 40px; margin-top: 40px;">
+                <style>
+                    @media (prefers-color-scheme: dark) {
+                        .philosophy-content { background: #1f2937 !important; }
+                    }
+                </style>
+                <div class="philosophy-content" style="background: white;">
+                    <h3 style="font-size: 22px; margin-bottom: 20px; color: var(--text-primary);">What Is a "Language-Game"?</h3>
+                    <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">
+                        Ludwig Wittgenstein, a 20th-century philosopher, discovered something profound: <strong>words don't have fixed meanings—they get meaning from how they're used within specific contexts.</strong>
+                    </p>
+
+                    <div style="background: var(--neutral-bg); padding: 20px; border-radius: 6px; margin: 20px 0;">
+                        <h4 style="font-size: 14px; color: var(--text-primary); margin-bottom: 15px; font-weight: 600;">Example: What Does "Evidence" Mean?</h4>
+
+                        <div style="margin-bottom: 15px; padding-left: 15px; border-left: 3px solid var(--primary);">
+                            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 5px;"><strong>At a restaurant:</strong></p>
+                            <p style="font-size: 13px; color: var(--text-secondary);">"I have evidence this place is good" = "I ate here and it was delicious"</p>
+                        </div>
+
+                        <div style="margin-bottom: 15px; padding-left: 15px; border-left: 3px solid var(--primary);">
+                            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 5px;"><strong>In criminal court:</strong></p>
+                            <p style="font-size: 13px; color: var(--text-secondary);">"Evidence" = facts that meet legal standards of admissibility, documented and traceable</p>
+                        </div>
+
+                        <div style="padding-left: 15px; border-left: 3px solid var(--primary);">
+                            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 5px;"><strong>In insurance investigation:</strong></p>
+                            <p style="font-size: 13px; color: var(--text-secondary);">"Evidence" = documented facts that support or contradict a coverage decision, specific and sourced</p>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">
+                        <strong>Same word. Three different meanings.</strong> Why? Because each context has different rules for how the word is used. The meaning comes from those rules, not from the word itself.
+                    </p>
+
+                    <h3 style="font-size: 22px; margin-bottom: 20px; margin-top: 30px; color: var(--text-primary);">Professional Language = Rules + Consistency</h3>
+                    <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.8;">
+                        A "language-game" is a system of communication where words have specific meanings *because there are rules governing how they're used.* Break the rules, and meaning breaks down.
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px;">
+                        <div style="background: var(--neutral-bg); padding: 20px; border-radius: 6px; border-left: 4px solid var(--accent);">
+                            <h4 style="font-size: 14px; color: var(--accent); margin-bottom: 10px; font-weight: 600;">Without Clear Rules</h4>
+                            <ul style="list-style: none; font-size: 13px; color: var(--text-secondary);">
+                                <li style="margin-bottom: 8px;">❌ Everyone invents their own definitions</li>
+                                <li style="margin-bottom: 8px;">❌ "Evidence" means different things to different people</li>
+                                <li style="margin-bottom: 8px;">❌ Readers interpret you differently</li>
+                                <li style="margin-bottom: 8px;">❌ Findings get challenged</li>
+                                <li style="margin-bottom: 8px;">❌ Communication breaks down</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: var(--neutral-bg); padding: 20px; border-radius: 6px; border-left: 4px solid var(--success);">
+                            <h4 style="font-size: 14px; color: var(--success); margin-bottom: 10px; font-weight: 600;">With Professional Rules</h4>
+                            <ul style="list-style: none; font-size: 13px; color: var(--text-secondary);">
+                                <li style="margin-bottom: 8px;">✅ "Evidence" means the same thing to everyone</li>
+                                <li style="margin-bottom: 8px;">✅ Readers understand you consistently</li>
+                                <li style="margin-bottom: 8px;">✅ Findings are defensible</li>
+                                <li style="margin-bottom: 8px;">✅ Courts recognize your language</li>
+                                <li style="margin-bottom: 8px;">✅ Communication is clear and precise</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 22px; margin-bottom: 20px; margin-top: 30px; color: var(--text-primary);">Why This Matters for Investigators</h3>
+                    <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 15px;">
+                        <strong>The 12 rules aren't arbitrary preferences.</strong> They're the foundational rules of the professional investigator language-game. When you follow them:
+                    </p>
+                    <ul style="list-style: none; font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--success); font-weight: 700;">✓</span>
+                            Everyone understands you the same way
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--success); font-weight: 700;">✓</span>
+                            Courts recognize and respect your language
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--success); font-weight: 700;">✓</span>
+                            Your findings are legally defensible
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--success); font-weight: 700;">✓</span>
+                            Adjusters know exactly what you're saying
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--success); font-weight: 700;">✓</span>
+                            You stop thinking about rules and just write professionally
+                        </li>
+                    </ul>
+
+                    <div style="background: var(--primary-light); color: white; padding: 20px; border-radius: 6px; margin-top: 20px;">
+                        <h4 style="font-size: 15px; margin-bottom: 10px; font-weight: 600;">The Insight</h4>
+                        <p style="font-size: 14px; line-height: 1.6;">
+                            Professional language is not poetry. It's not flexible. Words like "evidence," "finding," "allegation," and "recommendation" have <strong>determinate meaning</strong> because they're governed by professional rules. The Language Auditor doesn't just enforce those rules—it teaches you <strong>why they exist.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="example">
+        <div class="container">
+            <h2 class="section-title">See It In Action</h2>
+            <p class="section-subtitle">Example: Rule #6 (Contradiction ≠ Deception)</p>
+
+            <div class="example-container">
+                <div class="example-bad">
+                    <h4>❌ Violates Rule #6</h4>
+                    <div class="example-text">
+The claimant's two statements contradicted each other. This proves the claimant was being deceptive.
+                    </div>
+                </div>
+
+                <div class="example-good">
+                    <h4>✓ Follows Rule #6</h4>
+                    <div class="example-text">
+Statement 1 (1/14, to adjuster): "The water came from the ceiling."
+
+Statement 2 (1/17, to investigator): "I first noticed water near the foundation."
+
+These statements contradict on the water source. This is noteworthy.
+
+Possible explanations: (1) memory error about location, (2) misunderstanding the question, (3) intentional misstatement.
+
+To distinguish: [Evidence or follow-up that would help]
+
+Finding: [Once investigated, state what you actually found]
+                    </div>
+                </div>
+
+                <p style="margin-top: 20px; font-size: 14px; color: var(--text-secondary);">
+                    <strong>Why this works:</strong> The first version jumps from "contradiction exists" to "this proves deception." The second reports what you observed, acknowledges it's significant, considers alternatives, and explains what would resolve it.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Five simple steps to professional investigative language.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Paste Your Report</h4>
+                    <p>Any format works—email, Word, PDF, or plain text.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Request Validation</h4>
+                    <p>Ask: "edit" — or load the full project context.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Get Structured Feedback</h4>
+                    <p>Each violation flagged with rule, authority, and suggestion.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Read the Explanation</h4>
+                    <p>Why the rule matters. Where it comes from. What authority backs it.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Decide & Improve</h4>
+                    <p>You decide what to fix. You write the improvement. Report stays yours.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>⏱️ Complete in 20 Minutes</h3>
+                <p><strong>Quick start:</strong> Read identity.md (1 min) → Read sample report (5 min) → See validation output (5 min) → See more examples (10 min) → Try your own report</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What It Isn't</h2>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>❌ Not a Rewriter</h3>
+                    <p>We flag violations and suggest approaches. You write the improvements. If we rewrote, you'd become dependent. We want you independent.</p>
+                </div>
+
+                <div class="card">
+                    <h3>❌ Not a Decision Engine</h3>
+                    <p>We don't tell you whether to deny a claim or approve it. That's your adjuster's role. We validate language, not coverage decisions.</p>
+                </div>
+
+                <div class="card">
+                    <h3>❌ Not Generic Feedback</h3>
+                    <p>Not "strengthen your intro" or "be more specific." It's Rule #X, Authority Y, Fix Z.</p>
+                </div>
+
+                <div class="card">
+                    <h3>❌ Not a Replacement for Judgment</h3>
+                    <p>You're the investigator. You know the facts. We help you express them professionally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="text-align: center; padding: 100px 0;">
+        <div class="container">
+            <h2 class="section-title">Ready to Professionalize Your Language?</h2>
+            <p class="section-subtitle">Start with the official test case and see exactly how the validator works on a real investigation.</p>
+            <button class="cta-button" style="font-size: 18px; padding: 16px 36px;">Get Started on GitHub</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">The 12 Rules</a></li>
+                        <li><a href="#">Examples</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Case Law Reference</a></li>
+                        <li><a href="#">Policy Language</a></li>
+                        <li><a href="#">Professional Standards</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="https://github.com/JK0321/the-language-auditor">GitHub</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">Contribute</a></li>
+                        <li><a href="#">Report Issues</a></li>
+                        <li><a href="#">Discussions</a></li>
+                        <li><a href="#">License</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 The Language Auditor. Built for SIU investigators by investigative language professionals.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
