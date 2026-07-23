@@ -1,4 +1,4 @@
-﻿# The Language Auditor
+﻿﻿# The Language Auditor
 
 **An editor for SIU investigators that teaches the rules of professional investigative language.** Not a rewriter. Not a decision-maker. A language coach.
 
@@ -36,18 +36,15 @@ The validator enforces **12 professional language distinctions** drawn from Texa
 
 | Rule | What It Prevents |
 |------|-----------------|
-| **Observation != Interpretation** | Reporting conclusions as if they're facts |
 | **Evidence != Conclusion** | Letting your interpretation override what the evidence actually shows |
 | **Suspicion != Evidence** | Using gut feeling as proof |
 | **Possibility != Probability != Proof** | Overstating certainty ("it's possible" → "it's proven") |
 | **Intent != Motive** | Confusing "why someone wanted to" with "proof they deliberately did" |
 | **Contradiction != Deception** | Treating inconsistent statements as proof of lying |
-| **Recommendation != Decision** | Overstepping your role (adjuster makes coverage calls, not you) |
 | **Finding != Allegation** | Using prosecutor language when you're an investigator |
 | **Missing Evidence != Concealment** | Inferring someone's hiding something from absence of evidence |
 | **Correlation != Causation** | Connecting two facts without proof one caused the other |
 | **Authority Boundaries** | Staying in investigator role, not making adjuster decisions |
-| **Finding != Policy Interpretation** | Mapping findings to specific policy coverage, not paraphrasing |
 
 See: `rules.md` for full definitions and examples.
 
@@ -283,12 +280,10 @@ We validate against **12 professional language rules:**
 4. **Possibility !=!=  Probability !=!=  Proof** —” Be precise about certainty level.
 5. **Intent !=!=  Motive** —” Motive (why) is not the same as intent (deliberate choice).
 6. **Contradiction !=!=  Deception** —” Inconsistency is observable. Intent is not.
-7. **Recommendation !=!=  Decision** —” Recommend findings for review. Don't make coverage decisions.
 8. **Finding !=!=  Allegation** —” Distinguish verified facts from unverified claims.
 9. **Missing Evidence !=!=  Concealment** —” Distinguish "couldn't find" from "someone is hiding."
 10. **Correlation !=!=  Causation** —” Separate correlation from causal relationships.
 11. **Authority Boundaries** —” Stay in investigator role. Don't make adjuster decisions.
-12. **Finding !=!=  Policy Interpretation** —” Map findings to specific policy coverage, perils, exclusions, limits, and conditions. (NEW: 2026-07-22)
 
 See `rules.md` for full definitions and examples.
 
@@ -325,11 +320,12 @@ When you follow them:
 - [YES] You improve your judgment
 
 When you don't:
-- !=Œ Conclusions can be challenged
-- !=Œ Findings are questioned
-- !=Œ Reports lack traceability
-- !=Œ You overstep your role
-- !=Œ Your next investigation repeats the same mistakes
+- [NO] Conclusions get challenged
+- [NO] Findings get questioned
+- [NO] Reports lack traceability
+- [NO] You overstep your role
+- [NO] Your next investigation repeats mistakes
+
 
 This editor helps you catch yourself. Over time, you internalize the rules and catch violations before you write them.
 
@@ -398,6 +394,8 @@ A: No. We validate language. Coverage and liability decisions are yours (or your
 
 **Q: Can I use this for other types of documents?**
 A: This version is built for investigative reports. The rules could extend to other professional writing, but start here.
+
+
 
 
 
