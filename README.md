@@ -56,18 +56,18 @@ See: `rules.md` for full definitions and examples.
 ## Why These Rules Matter
 
 **When you follow them:**
-- ✅ Findings are legally defensible
-- ✅ Adjusters can act on your work
-- ✅ Reports hold up in court
-- ✅ You stay in role (avoid liability)
-- ✅ You catch mistakes before submission
+- [YES] Findings are legally defensible
+- [YES] Adjusters can act on your work
+- [YES] Reports hold up in court
+- [YES] You stay in role (avoid liability)
+- [YES] You catch mistakes before submission
 
 **When you don't:**
-- ❌ Conclusions get challenged
-- ❌ Reports sent back for revision
-- ❌ Cases thrown out on language grounds
-- ❌ You create legal exposure
-- ❌ Next investigation repeats the same errors
+- [NO] Conclusions get challenged
+- [NO] Reports sent back for revision
+- [NO] Cases thrown out on language grounds
+- [NO] You create legal exposure
+- [NO] Next investigation repeats the same errors
 
 ---
 
@@ -148,11 +148,11 @@ See: `identity.md` for full design philosophy.
 
 ## What This Is NOT
 
-- ❌ A decision engine (won't tell you whether to deny a claim)
-- ❌ A rewriter (won't rewrite your sentences)
-- ❌ Generic feedback ("strengthen your intro")
-- ❌ A compliance checkbox (though it ensures compliance)
-- ❌ A replacement for your judgment (you make the final call)
+- [NO] A decision engine (won't tell you whether to deny a claim)
+- [NO] A rewriter (won't rewrite your sentences)
+- [NO] Generic feedback ("strengthen your intro")
+- [NO] A compliance checkbox (though it ensures compliance)
+- [NO] A replacement for your judgment (you make the final call)
 
 ---
 
@@ -258,20 +258,20 @@ You decide which suggestions make sense. You write the improvements. The report 
 ## What Professional Language Looks Like
 
 Professional investigative language:
-- ✓ Sources every fact ("On 1/14, the adjuster noted...")
-- ✓ Separates observation from interpretation ("I observed X. This could mean Y because...")
-- ✓ Doesn't assume intent ("The discrepancy occurred. It could be error or intentional. Evidence distinguishing: ...")
-- ✓ Quotes policy language ("Section 4 states: '[exact quote]'")
-- ✓ Stays in role ("Findings: ... Recommendation for legal review: ...")
-- ✓ Documents contradictions ("Statement 1: ... Statement 2: ... Difference: ...")
+- [YES] Sources every fact ("On 1/14, the adjuster noted...")
+- [YES] Separates observation from interpretation ("I observed X. This could mean Y because...")
+- [YES] Doesn't assume intent ("The discrepancy occurred. It could be error or intentional. Evidence distinguishing: ...")
+- [YES] Quotes policy language ("Section 4 states: '[exact quote]'")
+- [YES] Stays in role ("Findings: ... Recommendation for legal review: ...")
+- [YES] Documents contradictions ("Statement 1: ... Statement 2: ... Difference: ...")
 
 Non-professional language:
-- ✗ Vague sourcing ("It was reported that...")
-- ✗ Mixes observation/conclusion ("The claimant appears fraudulent")
-- ✗ Assumes intent from circumstance ("The delay proves deception")
-- ✗ Paraphrases policy ("The policy clearly means...")
-- ✗ Makes coverage decisions ("I recommend we deny")
-- ✗ Ignores alternatives ("The evidence proves fraud")
+- [NO] Vague sourcing ("It was reported that...")
+- [NO] Mixes observation/conclusion ("The claimant appears fraudulent")
+- [NO] Assumes intent from circumstance ("The delay proves deception")
+- [NO] Paraphrases policy ("The policy clearly means...")
+- [NO] Makes coverage decisions ("I recommend we deny")
+- [NO] Ignores alternatives ("The evidence proves fraud")
 
 Non-professional language:
 - !=Œ Vague sourcing ("It was reported that...")
@@ -328,11 +328,11 @@ The complete validation framework details are embedded in the Claude project ins
 Professional investigative language has rules.
 
 When you follow them:
-- ✓ Your findings are legally defensible
-- ✓ Decision-makers can act on your work
-- ✓ Your reports are traceable and auditable
-- ✓ You avoid overreach (stay in your role)
-- ✓ You improve your judgment
+- [YES] Your findings are legally defensible
+- [YES] Decision-makers can act on your work
+- [YES] Your reports are traceable and auditable
+- [YES] You avoid overreach (stay in your role)
+- [YES] You improve your judgment
 
 When you don't:
 - !=Œ Conclusions can be challenged
