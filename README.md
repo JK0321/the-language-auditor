@@ -210,16 +210,16 @@ You decide which suggestions make sense. You write the improvements. The report 
 
 ## What Good Feedback Looks Like
 
-### Example: Contradiction â‰  Deception
+### Example: Contradiction !=!=  Deception
 
 **Your original text:**
 "The claimant's two statements contradicted each other. This proves the claimant was being deceptive."
 
 **Our feedback:**
 
-**FLAG: Contradiction â‰  Deception**
+**FLAG: Contradiction !=!=  Deception**
 - **Rule violated:** Professional Language Game, Rule #6
-- **Explanation:** You observed a contradiction (good—”report it). But contradiction â‰  proof of deception. Deception requires intent, which is not observable from contradiction alone. The contradiction could be memory error, misunderstanding, or intentional.
+- **Explanation:** You observed a contradiction (good—”report it). But contradiction !=!=  proof of deception. Deception requires intent, which is not observable from contradiction alone. The contradiction could be memory error, misunderstanding, or intentional.
 - **Authority:** Professional investigative standards; Arnold case law standard
 - **Suggestion:** "The claimant's first statement (date, to person): '[quote or summary].' Second statement (date, to person): '[quote or summary].' These contradict on this point: [specific difference]. This is noteworthy. Possible explanations: (1) memory error, (2) misunderstanding, (3) intentional misstatement. Evidence to distinguish: [what would help]."
 
@@ -240,14 +240,14 @@ You decide which suggestions make sense. You write the improvements. The report 
 
 ---
 
-### Example: Finding â‰  Policy Interpretation (NEW)
+### Example: Finding !=!=  Policy Interpretation (NEW)
 
 **Your original text:**
 "The dwelling suffered water damage. The claim appears to be covered."
 
 **Our feedback:**
 
-**FLAG: Finding â‰  Policy Interpretation**
+**FLAG: Finding !=!=  Policy Interpretation**
 - **Rule violated:** Finding must map to specific policy language (Rule #12)
 - **Explanation:** Which coverage applies (A, B, or C)? What peril caused the loss? Are exclusions relevant? What limits apply? Without citing specific policy language, the adjuster has to reverse-engineer your reasoning. Professional reports map findings to policy.
 - **Authority:** ACFE standards; Insurance policy language; Role boundaries
@@ -258,20 +258,28 @@ You decide which suggestions make sense. You write the improvements. The report 
 ## What Professional Language Looks Like
 
 Professional investigative language:
-- âœ… Sources every fact ("On 1/14, the adjuster noted...")
-- âœ… Separates observation from interpretation ("I observed X. This could mean Y because...")
-- âœ… Doesn't assume intent ("The discrepancy occurred. It could be error or intentional. Evidence distinguishing: ...")
-- âœ… Quotes policy language ("Section 4 states: '[exact quote]'")
-- âœ… Stays in role ("Findings: ... Recommendation for legal review: ...")
-- âœ… Documents contradictions ("Statement 1: ... Statement 2: ... Difference: ...")
+- ✓ Sources every fact ("On 1/14, the adjuster noted...")
+- ✓ Separates observation from interpretation ("I observed X. This could mean Y because...")
+- ✓ Doesn't assume intent ("The discrepancy occurred. It could be error or intentional. Evidence distinguishing: ...")
+- ✓ Quotes policy language ("Section 4 states: '[exact quote]'")
+- ✓ Stays in role ("Findings: ... Recommendation for legal review: ...")
+- ✓ Documents contradictions ("Statement 1: ... Statement 2: ... Difference: ...")
 
 Non-professional language:
-- âŒ Vague sourcing ("It was reported that...")
-- âŒ Mixes observation/conclusion ("The claimant appears fraudulent")
-- âŒ Assumes intent from circumstance ("The delay proves deception")
-- âŒ Paraphrases policy ("The policy clearly means...")
-- âŒ Makes coverage decisions ("I recommend we deny")
-- âŒ Ignores alternatives ("The evidence proves fraud")
+- ✗ Vague sourcing ("It was reported that...")
+- ✗ Mixes observation/conclusion ("The claimant appears fraudulent")
+- ✗ Assumes intent from circumstance ("The delay proves deception")
+- ✗ Paraphrases policy ("The policy clearly means...")
+- ✗ Makes coverage decisions ("I recommend we deny")
+- ✗ Ignores alternatives ("The evidence proves fraud")
+
+Non-professional language:
+- !=Œ Vague sourcing ("It was reported that...")
+- !=Œ Mixes observation/conclusion ("The claimant appears fraudulent")
+- !=Œ Assumes intent from circumstance ("The delay proves deception")
+- !=Œ Paraphrases policy ("The policy clearly means...")
+- !=Œ Makes coverage decisions ("I recommend we deny")
+- !=Œ Ignores alternatives ("The evidence proves fraud")
 
 ---
 
@@ -279,18 +287,18 @@ Non-professional language:
 
 We validate against **12 professional language rules:**
 
-1. **Observation â‰  Interpretation** —” Report what you saw. Then explain what it could mean.
-2. **Evidence â‰  Conclusion** —” Report facts. Let decision-makers decide what they mean.
-3. **Suspicion â‰  Evidence** —” Document specific facts, not gut feelings.
-4. **Possibility â‰  Probability â‰  Proof** —” Be precise about certainty level.
-5. **Intent â‰  Motive** —” Motive (why) is not the same as intent (deliberate choice).
-6. **Contradiction â‰  Deception** —” Inconsistency is observable. Intent is not.
-7. **Recommendation â‰  Decision** —” Recommend findings for review. Don't make coverage decisions.
-8. **Finding â‰  Allegation** —” Distinguish verified facts from unverified claims.
-9. **Missing Evidence â‰  Concealment** —” Distinguish "couldn't find" from "someone is hiding."
-10. **Correlation â‰  Causation** —” Separate correlation from causal relationships.
+1. **Observation !=!=  Interpretation** —” Report what you saw. Then explain what it could mean.
+2. **Evidence !=!=  Conclusion** —” Report facts. Let decision-makers decide what they mean.
+3. **Suspicion !=!=  Evidence** —” Document specific facts, not gut feelings.
+4. **Possibility !=!=  Probability !=!=  Proof** —” Be precise about certainty level.
+5. **Intent !=!=  Motive** —” Motive (why) is not the same as intent (deliberate choice).
+6. **Contradiction !=!=  Deception** —” Inconsistency is observable. Intent is not.
+7. **Recommendation !=!=  Decision** —” Recommend findings for review. Don't make coverage decisions.
+8. **Finding !=!=  Allegation** —” Distinguish verified facts from unverified claims.
+9. **Missing Evidence !=!=  Concealment** —” Distinguish "couldn't find" from "someone is hiding."
+10. **Correlation !=!=  Causation** —” Separate correlation from causal relationships.
 11. **Authority Boundaries** —” Stay in investigator role. Don't make adjuster decisions.
-12. **Finding â‰  Policy Interpretation** —” Map findings to specific policy coverage, perils, exclusions, limits, and conditions. (NEW: 2026-07-22)
+12. **Finding !=!=  Policy Interpretation** —” Map findings to specific policy coverage, perils, exclusions, limits, and conditions. (NEW: 2026-07-22)
 
 See `rules.md` for full definitions and examples.
 
@@ -300,13 +308,13 @@ See `rules.md` for full definitions and examples.
 
 Beyond the 12 rules, the validator checks across 8 distinct dimensions:
 
-1. **Evidentiary Chain** —” Facts must be traceable from evidence â†’ finding â†’ investigative issue â†’ recommendation
+1. **Evidentiary Chain** —” Facts must be traceable from evidence !=’ finding !=’ investigative issue !=’ recommendation
 2. **Policy Alignment** —” Findings must map to specific coverage, perils, exclusions, limits, and conditions
 3. **Alternative Hypothesis** —” Investigator must consider and document reasonable alternative explanations
 4. **Precision** —” Use specific facts, dates, quotes, and measurements (not vague language)
 5. **Language Integrity** —” Grammar, corruption detection, defined acronyms, clear pronoun references
 6. **Confirmation Bias** —” Report objectively; don't write to prove a predetermined conclusion
-7. **Inferential Ladder** —” Don't skip levels (observation â†’ conclusion without intermediate steps)
+7. **Inferential Ladder** —” Don't skip levels (observation !=’ conclusion without intermediate steps)
 8. **Investigation Completeness** —” What investigative work should have been done? Is it documented?
 
 Together, the 12 rules and 8 layers create a comprehensive framework for professional investigative writing.
@@ -320,18 +328,18 @@ The complete validation framework details are embedded in the Claude project ins
 Professional investigative language has rules.
 
 When you follow them:
-- âœ… Your findings are legally defensible
-- âœ… Decision-makers can act on your work
-- âœ… Your reports are traceable and auditable
-- âœ… You avoid overreach (stay in your role)
-- âœ… You improve your judgment
+- ✓ Your findings are legally defensible
+- ✓ Decision-makers can act on your work
+- ✓ Your reports are traceable and auditable
+- ✓ You avoid overreach (stay in your role)
+- ✓ You improve your judgment
 
 When you don't:
-- âŒ Conclusions can be challenged
-- âŒ Findings are questioned
-- âŒ Reports lack traceability
-- âŒ You overstep your role
-- âŒ Your next investigation repeats the same mistakes
+- !=Œ Conclusions can be challenged
+- !=Œ Findings are questioned
+- !=Œ Reports lack traceability
+- !=Œ You overstep your role
+- !=Œ Your next investigation repeats the same mistakes
 
 This editor helps you catch yourself. Over time, you internalize the rules and catch violations before you write them.
 
@@ -400,4 +408,5 @@ A: No. We validate language. Coverage and liability decisions are yours (or your
 
 **Q: Can I use this for other types of documents?**
 A: This version is built for investigative reports. The rules could extend to other professional writing, but start here.
+
 
